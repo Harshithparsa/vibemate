@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(to bottom right, #fef3c7, #fed7aa, #fecdd3);
+    color: #111827;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: linear-gradient(to bottom right, #111827, #1f2937, #111827);
+      color: #f9fafb;
+    }
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #fbbf24, #f97316);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #f59e0b, #ea580c);
+}
+
+/* Smooth transitions for interactive elements */
+button, a, [role="button"] {
+  transition: all 0.3s ease-out;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.5);
+  border-radius: 0.5rem;
+}
+
+/* Bottom navigation spacing for mobile */
+@media (max-width: 768px) {
+  body:not([data-no-bottom-nav]) {
+    padding-bottom: 4rem; /* 64px for bottom nav */
+  }
+}
